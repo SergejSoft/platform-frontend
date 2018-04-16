@@ -74,9 +74,31 @@ export const settingsNotification = () => {
   };
 };
 
+export const etoPendingNotification = () => {
+  return {
+    id: notificationId.next().value,
+    type: NotificationType.INFO,
+    text: "You have filled all information and you are able to change them until the ETO is launched",
+    actionLinkText: "Go to settings",
+    onClickAction: routingActions.goToSettings(),
+  };
+};
+
+export const etoDraftNotification = () => {
+  return {
+    id: notificationId.next().value,
+    type: NotificationType.WARNING,
+    text: "You have not filled all information",
+    actionLinkText: "Go to settings",
+    onClickAction: routingActions.goToSettings(),
+  };
+};
+
 export const selectSettingsNotification = (state: IAppState) =>
   !selectIsUserEmailVerified(state.auth) ||
   !selectBackupCodesVerified(state.auth) ||
   selectKycRequestStatus(state.kyc) !== "Accepted"
     ? settingsNotification()
     : undefined;
+
+//TODO: adds selectors for "etoPendingNotification" "etoDraftNotification" once eto is stored in state
