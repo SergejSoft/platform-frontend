@@ -16,11 +16,12 @@ export interface INotificationProps {
   onClick: () => void;
 }
 
-const { INFO, WARNING } = NotificationType;
+const { INFO, WARNING, ETO } = NotificationType;
 
 const icons = {
   [INFO]: infoIcon,
   [WARNING]: warningIcon,
+  [ETO]: infoIcon,
 };
 
 export const Notification: React.SFC<INotificationProps> = ({

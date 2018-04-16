@@ -9,6 +9,7 @@ import { notificationActions } from "./actions";
 export enum NotificationType {
   INFO = "info",
   WARNING = "warning",
+  ETO = "eto",
 }
 
 export interface INotification {
@@ -77,20 +78,23 @@ export const settingsNotification = () => {
 export const etoPendingNotification = () => {
   return {
     id: notificationId.next().value,
-    type: NotificationType.INFO,
-    text: "You have filled all information and you are able to change them until the ETO is launched",
+    type: NotificationType.ETO,
+    text:
+      "You have filled all information and you are able to change them until the ETO is launched",
     actionLinkText: "Go to settings",
     onClickAction: routingActions.goToSettings(),
+    //TODO: connect with correct action
   };
 };
 
 export const etoDraftNotification = () => {
   return {
     id: notificationId.next().value,
-    type: NotificationType.WARNING,
+    type: NotificationType.ETO,
     text: "You have not filled all information",
     actionLinkText: "Go to settings",
     onClickAction: routingActions.goToSettings(),
+    //TODO: connect with correct action
   };
 };
 
@@ -101,4 +105,4 @@ export const selectSettingsNotification = (state: IAppState) =>
     ? settingsNotification()
     : undefined;
 
-//TODO: adds selectors for "etoPendingNotification" "etoDraftNotification" once eto is stored in state
+//TODO: add selectors for "etoPendingNotification" "etoDraftNotification" once eto is stored in state
