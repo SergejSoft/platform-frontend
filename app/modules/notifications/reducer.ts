@@ -2,6 +2,7 @@ import { AppActionTypes, AppReducer, IAppState } from "../../store";
 import { DeepReadonly } from "../../types";
 import { selectKycRequestStatus } from "../kyc/selectors";
 import { routingActions } from "../routing/actions";
+import { notificationId } from "./../../utils/generateUniqueId";
 import { selectBackupCodesVerified, selectIsUserEmailVerified } from "./../auth/selectors";
 import { notificationActions } from "./actions";
 
@@ -63,13 +64,15 @@ export const notificationsReducer: AppReducer<INotificationsState> = (
   return state;
 };
 
-export const settingsNotification = () => ({
-  id: Date.now(),
-  type: NotificationType.WARNING,
-  text: "ACTION REQUIRED: Please update your account settings",
-  actionLinkText: "Go to settings",
-  onClickAction: routingActions.goToSettings(),
-});
+export const settingsNotification = () => {
+  return {
+    id: notificationId.next().value,
+    type: NotificationType.WARNING,
+    text: "ACTION REQUIRED: Please update your account settings",
+    actionLinkText: "Go to settings",
+    onClickAction: routingActions.goToSettings(),
+  };
+};
 
 export const selectSettingsNotification = (state: IAppState) =>
   !selectIsUserEmailVerified(state.auth) ||
