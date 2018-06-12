@@ -36,14 +36,13 @@ export const Landing: React.SFC = () => (
             <h3 className={styles.benefitsHeader}>
               <FormattedMessage id="landing.hero.benefits.title" />
             </h3>
-            <div>
+            <div className={styles.benefitsList}>
               <span className={styles.benefit}>
                 <FormattedMessage id="landing.hero.benefits.benefit-1" />
               </span>
               <span className={styles.benefit}>
                 <FormattedMessage id="landing.hero.benefits.benefit-2" />
               </span>
-              <br />
               <span className={styles.benefit}>
                 <FormattedMessage id="landing.hero.benefits.benefit-3" />
               </span>
@@ -53,7 +52,6 @@ export const Landing: React.SFC = () => (
               <span className={styles.benefit}>
                 <FormattedMessage id="landing.hero.benefits.benefit-5" />
               </span>
-              <br />
               <span className={styles.benefit}>
                 <FormattedMessage id="landing.hero.benefits.benefit-6" />
               </span>
