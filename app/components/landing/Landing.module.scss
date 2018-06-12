@@ -126,7 +126,7 @@
 
 .hero {
   @include media-breakpoint-down (md) {
-    background-size: 60%;
+    background-size: 80%;
 
     &::before {
       $bg: rgba($color-white, .7);
@@ -145,7 +145,6 @@
   background-repeat: no-repeat;
   background-position: right top;
   position: relative;
-  min-height: px-to-rem(800px);
   display: flex;
 }
 
@@ -214,27 +213,23 @@
   margin: $spacing-vertical-lg-1 0;
   color: $color-graphite;
   text-transform: uppercase;
-}
 
-.benefits-list {
   @include media-breakpoint-down (md) {
-    @include make-col-ready;
+    font-size: px-to-rem(20);
   }
 }
 
 .benefit {
   font-size: px-to-rem(28);
 
-
   @include media-breakpoint-down (md) {
     @include font-headline-small;
-
-    text-align: left;
-    display: block;
+    // text-align: left;
+    // display: block;
   }
 
   color: $color-graphite;
-  // display: inline-flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 
@@ -249,15 +244,9 @@
   }
 
   @include media-breakpoint-down (md) {
-    @include make-col(6);
-
     &::before {
-      @include rect(3px, 5px);
+      @include rect(3px, 20px);
       margin-top: 0;
-    }
-
-    &:last-of-type::after {
-      display: none;
     }
   }
 }
