@@ -1,5 +1,7 @@
+@import "../../../styles/neufund-theme";
+
 .sheep-wrapper {
-  z-index: 1000;
+  z-index: $z-index-over-all;
   position: absolute;
 
   margin-top: 135px;
@@ -9,10 +11,10 @@
 
   &.left {
     left: 0;
-    transform: rotate(0deg) scaleX(-1) translate(20px);
+    transform: rotate(0deg) scaleX(-1) translate(30%);
 
     &.hidden {
-      transform: rotate(25deg) scaleX(-1) translate(70px);
+      transform: rotate(25deg) scaleX(-1) translate(200%);
     }
 
     .thoughts-text {
@@ -22,16 +24,18 @@
 
   &.right {
     right: 0;
-    transform: rotate(0deg) translate(20px);
+    transform: rotate(0deg) translate(30%);
 
     &.hidden {
-      transform: rotate(25deg) translate(70px);
+      transform: rotate(25deg) translate(130%);
     }
   }
 
   &.hidden {
     .thoughts {
-      display: none;
+      &.is-visible {
+        opacity: 0;
+      }
     }
   }
 
@@ -39,7 +43,12 @@
     position: absolute;
     top: -108px;
     left: -117px;
-    animation: fadeInFromNone .5s ease-out;
+    opacity: 0;
+
+    &.is-visible {
+      opacity: 1;
+      transition: 300ms $ease-out-sine opacity;
+    }
 
     .thoughts-text {
       position: absolute;

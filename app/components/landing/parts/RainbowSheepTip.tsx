@@ -53,12 +53,10 @@ export class RainbowSheepTip extends React.Component<IProps> {
             className={cn(styles.sheepWrapper, !visible && styles.hidden, styles[side])}
             onClick={this.onClick}
           >
-            {open && (
-              <div className={styles.thoughts}>
-                <img src={thoughts} />
-                <span className={styles.thoughtsText}>{tip[tipIndex] || DEFAULT_MESSAGE}</span>
-              </div>
-            )}
+            <div className={cn(styles.thoughts, open && styles.isVisible)}>
+              <img src={thoughts} />
+              <span className={styles.thoughtsText}>{tip[tipIndex] || DEFAULT_MESSAGE}</span>
+            </div>
             <img src={sheep} />
           </div>
         )}
