@@ -1,21 +1,17 @@
 @import "../../../styles/neufund-theme";
 
+$_sheep-size: 50px;
+
 .sheep-wrapper {
-  z-index: $z-index-over-all;
-  position: absolute;
-
-  margin-top: 135px;
-  transition: .2s ease-in;
-
   cursor: pointer;
+  display: flex;
+  position: absolute;
+  user-select: none;
+  z-index: $z-index-over-all;
 
   &.left {
-    left: 0;
-    transform: rotate(0deg) scaleX(-1) translate(30%);
-
-    &.hidden {
-      transform: rotate(25deg) scaleX(-1) translate(200%);
-    }
+    left: $_sheep-size / -3;
+    transform: scaleX(-1);
 
     .thoughts-text {
       transform: scaleX(-1);
@@ -23,56 +19,90 @@
   }
 
   &.right {
-    right: 0;
-    transform: rotate(0deg) translate(30%);
-
-    &.hidden {
-      transform: rotate(25deg) translate(130%);
-    }
+    right: $_sheep-size / -3;
   }
 
-  &.hidden {
-    .thoughts {
-      &.is-visible {
-        opacity: 0;
+  &.is-hidden {
+    will-change: transform;
+    transition: 300ms ease-in-out transform;
+
+    &.left {
+      left: 0;
+      transform: translateX(-100%) scaleX(-1);
+
+      .thoughts-text {
+        transform: scaleX(-1);
       }
     }
-  }
 
-  .thoughts {
-    position: absolute;
-    top: -108px;
-    left: -117px;
-    opacity: 0;
-
-    &.is-visible {
-      opacity: 1;
-      transition: 300ms $ease-out-sine opacity;
-    }
-
-    .thoughts-text {
-      position: absolute;
-      left: 16px;
-      top: 28px;
-      width: 74px;
-      text-align: center;
+    &.right {
+      right: 0;
+      transform: translateX(100%);
     }
   }
 }
 
-@keyframes fadeInFromNone {
-  0% {
-    display: none;
-    opacity: 0;
-  }
+.sheep-image {
+  @include rect($_sheep-size);
 
-  1% {
-    display: block;
-    opacity: 0;
-  }
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-bottom: $_sheep-size / -2;
+}
 
-  100% {
-    display: block;
+.thoughts {
+  $_thought-appearing-time: 150ms;
+
+  flex-shrink: 0;
+
+  .cloud,
+  .bubble-large,
+  .bubble-small {
     opacity: 1;
+    transition: 250ms $ease-in-out-expo opacity;
+
+    &.is-hidden {
+      opacity: 0;
+    }
+  }
+
+  .cloud,
+  .thoughts-text {
+    transition-delay: $_thought-appearing-time;
+
+    &.is-hidden {
+      transition-delay: $_thought-appearing-time / 3;
+    }
+  }
+
+  .bubble-large {
+    &,
+    &.is-hidden {
+      transition-delay: $_thought-appearing-time * 2 / 3;
+    }
+  }
+
+  .bubble-small {
+    transition-delay: $_thought-appearing-time / 3;
+
+    &.is-hidden {
+      transition-delay: $_thought-appearing-time;
+    }
+  }
+}
+
+.thoughts-text {
+  @include rect(78px, 70px);
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 2px;
+  position: absolute;
+  top: 16px;
+  left: 13px;
+
+  &.is-hidden {
+    opacity: 0;
   }
 }
