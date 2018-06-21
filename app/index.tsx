@@ -35,6 +35,18 @@ import "../node_modules/font-awesome/scss/font-awesome.scss";
 import "./styles/bootstrap.scss";
 import "./styles/overrides.scss";
 
+// install google tag manager
+// @ts-ignore
+window.dataLayer = window.dataLayer || [];
+function gtag(){
+  // @ts-ignore
+  dataLayer.push(arguments);
+}
+// @ts-ignore
+gtag('js', new Date());
+// @ts-ignore
+gtag('config', 'UA-88781119-1'); // @TODO move to env vars or config?
+
 // @note: this is done to make HMR work with react router. In production build its gone.
 function forceRerenderInDevMode(): number {
   if (process.env.NODE_ENV === "development") {
