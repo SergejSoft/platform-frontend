@@ -47,6 +47,7 @@ class ETOFormsProgressSectionWidget extends React.Component<IProps> {
       companyInformationProgress,
       productVisionProgress,
       etoTermsProgress,
+      loadingData,
       EtoKeyIndividualsProgress,
       legalInformationProgress,
       kycStatus,
@@ -59,6 +60,7 @@ class ETOFormsProgressSectionWidget extends React.Component<IProps> {
       <>
         <Col lg={4} xs={12} className="pt-2">
           <EtoFormProgressWidget
+            isLoading={loadingData}
             to={etoRegisterRoutes.companyInformation}
             progress={shouldEtoDataLoad ? companyInformationProgress : 0}
             name="Company Information"
@@ -66,6 +68,7 @@ class ETOFormsProgressSectionWidget extends React.Component<IProps> {
         </Col>
         <Col lg={4} xs={12} className="pt-2">
           <EtoFormProgressWidget
+            isLoading={loadingData}
             to={etoRegisterRoutes.etoTerms}
             progress={shouldEtoDataLoad ? etoTermsProgress : 0}
             name="ETO Terms"
@@ -73,6 +76,7 @@ class ETOFormsProgressSectionWidget extends React.Component<IProps> {
         </Col>
         <Col lg={4} xs={12} className="pt-2">
           <EtoFormProgressWidget
+            isLoading={loadingData}
             to={etoRegisterRoutes.keyIndividuals}
             progress={shouldEtoDataLoad ? EtoKeyIndividualsProgress : 0}
             name="Key Individuals"
@@ -80,6 +84,7 @@ class ETOFormsProgressSectionWidget extends React.Component<IProps> {
         </Col>
         <Col lg={4} xs={12} className="pt-2">
           <EtoFormProgressWidget
+            isLoading={loadingData}
             to={etoRegisterRoutes.etoTerms}
             progress={shouldEtoDataLoad ? legalInformationProgress : 0}
             name="Legal Information"
@@ -87,6 +92,7 @@ class ETOFormsProgressSectionWidget extends React.Component<IProps> {
         </Col>
         <Col lg={4} xs={12} className="pt-2">
           <EtoFormProgressWidget
+            isLoading={loadingData}
             to={etoRegisterRoutes.productVision}
             progress={shouldEtoDataLoad ? productVisionProgress : 0}
             name="Product Vision"
